@@ -1,0 +1,46 @@
+.input-wrapper {
+  background: $color-white;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-lightgray;
+  color: $color-darkgray;
+  font-size: 1rem;
+  transition: border .2s;
+
+  .input {
+    border: 0;
+    padding: .6rem 1rem;
+    flex: 1;
+    outline: 0;
+    font-size: 1rem;
+  }
+
+  i,
+  span {
+    display: block;
+    width: 3rem;
+    text-align: center;
+    color: $color-darkgray;
+    padding-left: .3rem;
+    font-size: 1.5em;
+  }
+
+  &:focus-within {
+    border-color: $color-darkgray;
+
+    // i {
+    //   color: $color-darkgray;
+    // }
+  }
+}
+
+// .input-wrapper--i-right .input {
+//   padding-right: 0 !important;
+// }
+
+.input-wrapper--i-left .input {
+  padding-left: 0 !important;
+}

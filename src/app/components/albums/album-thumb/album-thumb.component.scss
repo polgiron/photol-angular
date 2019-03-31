@@ -1,0 +1,16 @@
+@import '~src/assets/scss/variables';
+
+.album {
+  // background: red;
+}
+
+.infos {
+  margin-top: $spacing / 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.year {
+  color: $color-gray;
+  font-weight: 500;
+}

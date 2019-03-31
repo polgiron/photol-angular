@@ -1,0 +1,13 @@
+<main class="main-container">
+  <div class="main-loader-wrapper" *ngIf="!photos">
+    <app-loader></app-loader>
+  </div>
+  <div class="album" *ngIf="photos">
+    <h2 class="title">{{album.title}}</h2>
+    <ul class="list">
+      <li class="list__entry" *ngFor="let photo of photos">
+        <app-photo-thumb [photo]="photo"></app-photo-thumb>
+      </li>
+    </ul>
+  </div>
+</main>

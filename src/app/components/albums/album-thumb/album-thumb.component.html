@@ -1,0 +1,10 @@
+<a class="album-thumb" [routerLink]="['/', 'albums', album.id]">
+  <div class="cover">
+    <img class="image-rounded" [src]="album.primary_photo_extras.url_m" alt="">
+  </div>
+  <div class="infos">
+    <h2 class="title">{{album.title._content}}</h2>
+    <div class="year">{{album.year}}</div>
+    <!-- <p class="description">{{album.description._content}}</p> -->
+  </div>
+</a>

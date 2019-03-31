@@ -1,0 +1,19 @@
+@import '~src/assets/scss/variables';
+
+.album {
+  // background: red;
+}
+
+.title {
+  font-size: 2rem;
+  margin: $spacing 0;
+}
+
+.list {
+  column-count: 3;
+  column-gap: 1.5 * $spacing;
+}
+
+.list__entry {
+  margin-bottom: 1.5 * $spacing;
+}

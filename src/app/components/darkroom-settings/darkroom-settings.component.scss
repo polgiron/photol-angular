@@ -1,0 +1,23 @@
+@import '~src/assets/scss/variables';
+
+ul {
+  display: flex;
+}
+
+li {
+  text-align: center;
+
+  &:not(:last-child) {
+    margin-right: 2 * $spacing;
+  }
+}
+
+.value {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.title {
+  color: $color-mediumgray;
+  font-size: .9rem;
+}

@@ -1,0 +1,10 @@
+<main class="main-container">
+  <div class="main-loader-wrapper" *ngIf="!albums.length">
+    <app-loader></app-loader>
+  </div>
+  <ul class="thumbs-list" *ngIf="albums.length">
+    <li *ngFor="let album of albums">
+      <app-album-thumb [album]="album"></app-album-thumb>
+    </li>
+  </ul>
+</main>

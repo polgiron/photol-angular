@@ -1,0 +1,27 @@
+<div class="main-loader-wrapper" *ngIf="!photo">
+  <app-loader></app-loader>
+</div>
+<div class="photo" [ngClass]="{'is-vertical': isVertical}" *ngIf="photo">
+  <div class="left">
+    <img
+      class="image-rounded"
+      [ngClass]="{'is-loaded': isLoaded}"
+      [src]="photo.photoUrl"
+      alt=""
+    >
+  </div>
+  <div class="right">
+    <div class="inner">
+      <h2 class="title">{{photo.title._content || 'Untitled'}}</h2>
+      <p class="description">
+        {{photo.description._content || 'No description'}}
+      </p>
+      <div class="tags-wrapper">
+        <app-tags [tags]="tags"></app-tags>
+      </div>
+      <div class="settings-wrapper">
+        <app-darkroom-settings [time]="time" [contrast]="contrast" [aperture]="aperture"></app-darkroom-settings>
+      </div>
+    </div>
+  </div>
+</div>

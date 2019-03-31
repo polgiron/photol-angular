@@ -1,0 +1,10 @@
+<!-- <main class="main-container"> -->
+  <header class="header">
+    <a [routerLink]="['/']"><h1 class="title">Photol</h1></a>
+    <app-search-input (search)="onSearch($event)"></app-search-input>
+  </header>
+  <router-outlet *ngIf="!searchResults"></router-outlet>
+  <div class="search-results" *ngIf="searchResults">
+    hello
+  </div>
+<!-- </main> -->
