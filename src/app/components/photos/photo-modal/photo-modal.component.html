@@ -1,0 +1,6 @@
+<div class="photo-modal" *ngIf="photoId">
+  <div class="overlay" (click)="close()"></div>
+  <div class="dialog">
+    <app-photo [photoId]="photoId"></app-photo>
+  </div>
+</div>

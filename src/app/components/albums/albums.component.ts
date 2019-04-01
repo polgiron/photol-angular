@@ -20,7 +20,6 @@ export class AlbumsComponent implements OnInit {
       this.albums = albums;
       albums.forEach(album => {
         album.year = this.datePipe.transform(album.primary_photo_extras.datetaken, 'y');
-        console.log(album.year);
       });
     });
   }

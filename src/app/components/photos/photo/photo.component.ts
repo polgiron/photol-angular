@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BaseApi } from 'src/app/services/base-api.service';
 
@@ -8,7 +8,8 @@ import { BaseApi } from 'src/app/services/base-api.service';
   styleUrls: ['./photo.component.scss']
 })
 export class PhotoComponent implements OnInit {
-  photo;
+  @Input() photoId: number;
+  photo: any;
   isLoaded: boolean = false;
   isVertical: boolean = false;
   tags: string[] = [];
@@ -22,23 +23,32 @@ export class PhotoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      const photoId = params['photoId'];
-      this.api.get('photo/' + photoId).then((photo: any) => {
-        this.photo = this.extendPhoto(photo);
-
-        const image = new Image();
-        image.onload = () => {
-          // console.log(image.width + ' x ' + image.height);
-          if (image.height > image.width) {
-            this.isVertical = true;
-          }
-          this.isLoaded = true;
-          // console.log(this.isVertical);
-        }
-        image.src = this.photo.photoUrl;
+    if (this.photoId) {
+      this.getPhoto(this.photoId);
+    } else {
+      this.route.params.subscribe((params: Params) => {
+        this.getPhoto(params['photoId']);
       });
+    }
+  }
+
+  getPhoto(photoId: number) {
+    console.log('photoId', photoId);
+    this.api.get('photo/' + photoId).then((photo: any) => {
+      this.photo = this.extendPhoto(photo);
+      this.getPhotoOrientation();
     });
+  }
+
+  getPhotoOrientation() {
+    const image = new Image();
+    image.onload = () => {
+      if (image.height > image.width) {
+        this.isVertical = true;
+      }
+      this.isLoaded = true;
+    }
+    image.src = this.photo.photoUrl;
   }
 
   extendPhoto(photo: any) {

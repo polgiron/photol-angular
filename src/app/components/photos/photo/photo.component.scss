@@ -3,7 +3,8 @@
 .photo {
   display: flex;
   // background: $color-darkgray;
-  height: calc(100vh - #{$topbar-height});
+  // height: calc(100vh - #{$topbar-height});
+  height: 100%;
   position: relative;
   // background: $color-white;
   // color: $color-white-smoke;
@@ -34,8 +35,8 @@
   flex: 1;
   display: flex;
   align-items: flex-start;
-  padding: 2 * $spacing;
-  padding-right: 0;
+  // padding: 2 * $spacing;
+  // padding-right: 0;
 
   img {
     width: 100%;
@@ -52,8 +53,8 @@
 
 .right {
   width: 20rem;
-  padding: 2 * $spacing;
-  // padding-left: $spacing;
+  // padding: 2 * $spacing;
+  padding-left: $spacing;
   // background: yellow;
 
   .inner {

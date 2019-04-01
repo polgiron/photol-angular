@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-photo-thumb',
@@ -6,10 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./photo-thumb.component.scss']
 })
 export class PhotoThumbComponent implements OnInit {
-  @Input() photo;
+  @Input() photo: any;
 
-  constructor() { }
+  constructor(
+    private photoService: PhotoService
+  ) { }
 
   ngOnInit() {
+
+  }
+
+  openPhotoModal() {
+    this.photoService.openPhotoModal(this.photo.id);
   }
 }

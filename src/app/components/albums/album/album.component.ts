@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BaseApi } from 'src/app/services/base-api.service';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
   styleUrls: ['./album.component.scss']
 })
-export class AlbumComponent implements OnInit {
-  album;
-  photos;
+export class AlbumComponent implements OnInit, OnDestroy {
+  album: any;
+  photos: any;
   numberOfColumns: number = 3;
 
   constructor(
     private route: ActivatedRoute,
-    private api: BaseApi
+    private api: BaseApi,
+    private albumService: AlbumService
   ) { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class AlbumComponent implements OnInit {
       const albumId = params['albumId'];
       this.api.get('album/' + albumId).then((album: any) => {
         this.album = album;
+        this.albumService.setAlbumTitle(this.album.title);
         this.reorder(album.photo);
       });
     });
@@ -49,5 +52,9 @@ export class AlbumComponent implements OnInit {
     this.photos = out;
 
     // this.setState({ cards: out, columns: columns });
+  }
+
+  ngOnDestroy() {
+    this.albumService.setAlbumTitle('');
   }
 }

@@ -1,0 +1,24 @@
+@import '~src/assets/scss/variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3 * $spacing;
+  height: $topbar-height;
+  // border-bottom: 1px solid $color-lightgray;
+}
+
+.left {
+  display: flex;
+  align-items: baseline;
+}
+
+.title {
+  font-size: 2rem;
+  margin-right: $spacing;
+}
+
+.album-title {
+  font-size: 1.1rem;
+}

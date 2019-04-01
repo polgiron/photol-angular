@@ -17,6 +17,10 @@ import { PhotoComponent } from './components/photos/photo/photo.component';
 import { PhotoThumbComponent } from './components/photos/photo-thumb/photo-thumb.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { DarkroomSettingsComponent } from './components/darkroom-settings/darkroom-settings.component';
+import { PhotoModalComponent } from './components/photos/photo-modal/photo-modal.component';
+import { PhotoService } from 'src/app/services/photo.service';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { AlbumService } from 'src/app/services/album.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { DarkroomSettingsComponent } from './components/darkroom-settings/darkro
     PhotoComponent,
     PhotoThumbComponent,
     TagsComponent,
-    DarkroomSettingsComponent
+    DarkroomSettingsComponent,
+    PhotoModalComponent,
+    TopbarComponent
   ],
   imports: [
     HttpModule,
@@ -41,7 +47,9 @@ import { DarkroomSettingsComponent } from './components/darkroom-settings/darkro
   ],
   providers: [
     BaseApi,
-    DatePipe
+    DatePipe,
+    PhotoService,
+    AlbumService
   ],
   bootstrap: [AppComponent]
 })

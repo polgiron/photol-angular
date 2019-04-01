@@ -1,0 +1,9 @@
+<header class="header">
+  <div class="left">
+    <a [routerLink]="['/']">
+      <h1 class="title">Photol</h1>
+    </a>
+    <div class="album-title">{{albumTitle}}</div>
+  </div>
+  <app-search-input (search)="onSearch($event)"></app-search-input>
+</header>
