@@ -7,6 +7,7 @@ media_folder: "/src/data/uploads"
 
 collections:
   - name: "image"
+    label: "Image"
     folder: "data/_images"
     create: true
     extension: "json"
