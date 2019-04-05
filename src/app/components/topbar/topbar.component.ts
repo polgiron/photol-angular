@@ -23,6 +23,10 @@ export class TopbarComponent implements OnInit {
       });
   }
 
+  onSearch(event: any) {
+
+  }
+
   ngOnDestroy() {
     this._alive = false;
   }
