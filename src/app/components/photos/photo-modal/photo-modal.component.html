@@ -1,6 +1,21 @@
-<div class="photo-modal" *ngIf="photoId">
+<div class="modal">
   <div class="overlay" (click)="close()"></div>
   <div class="dialog">
-    <app-photo [photoId]="photoId"></app-photo>
+    <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
+    <div class="left" #left>
+      <app-image [src]="imageSrc" [width]="photo.width_m" [height]="photo.height_m"></app-image>
+    </div>
+    <div class="right" #right>
+      <div class="inner">
+        <h2 class="title">{{photo.title || 'Untitled'}}</h2>
+        <p class="description">{{photo.description._content || 'No description'}}</p>
+        <div class="tags-wrapper">
+          <app-tags [tags]="tags"></app-tags>
+        </div>
+        <div class="settings-wrapper">
+          <app-darkroom-settings [time]="time" [contrast]="contrast" [aperture]="aperture"></app-darkroom-settings>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

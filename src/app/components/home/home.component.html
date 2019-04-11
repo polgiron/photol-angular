@@ -1,11 +1,9 @@
-<!-- <main class="main-container"> -->
-  <app-topbar></app-topbar>
+<app-topbar></app-topbar>
 
-  <router-outlet *ngIf="!searchResults"></router-outlet>
+<router-outlet *ngIf="!searchResults"></router-outlet>
 
-  <div class="search-results" *ngIf="searchResults">
-    hello
-  </div>
+<div class="search-results" *ngIf="searchResults">
+  hello
+</div>
 
-  <app-photo-modal></app-photo-modal>
-<!-- </main> -->
+<app-photo-modal *ngIf="modalPhoto" [photo]="modalPhoto"></app-photo-modal>

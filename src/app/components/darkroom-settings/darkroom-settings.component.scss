@@ -1,19 +1,23 @@
 @import '~src/assets/scss/variables';
 
 ul {
-  display: flex;
+  // border: 1px solid $color-mediumgray;
+  border-radius: .5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 li {
   text-align: center;
+  // padding: .5rem;
 
-  &:not(:last-child) {
-    margin-right: 2 * $spacing;
-  }
+  // &:not(:last-child) {
+  //   border-right: 1px solid $color-mediumgray;
+  // }
 }
 
 .value {
-  font-weight: 600;
+  // font-weight: 600;
   font-size: 1.2rem;
 }
 

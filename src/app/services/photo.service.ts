@@ -3,16 +3,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class PhotoService {
-  private _modalPhoto: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+  private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor() { }
 
-  public modalPhotoChannel(): Observable<number> {
+  public modalPhotoChannel(): Observable<any> {
     return this._modalPhoto.asObservable();
   }
 
-  openPhotoModal(photoId: number) {
-    this._modalPhoto.next(photoId);
+  openPhotoModal(photo: any) {
+    this._modalPhoto.next(photo);
     document.body.classList.add('is-static');
   }
 

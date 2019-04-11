@@ -11,5 +11,6 @@ export class TagsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // console.log(this.tags);
   }
 }

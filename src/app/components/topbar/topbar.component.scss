@@ -1,9 +1,7 @@
 @import '~src/assets/scss/variables';
 
 .header {
-  // padding: 0 3rem;
-  // height: $topbar-height;
-  // border-bottom: 1px solid $color-lightgray;
+  animation: fade-in .4s both;
 }
 
 .main-container {
@@ -19,11 +17,20 @@
 
 .title {
   font-size: 2rem;
-  // margin-right: $spacing;
   text-transform: uppercase;
   letter-spacing: .1em;
 }
 
 .album-title {
   font-size: 1.1rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

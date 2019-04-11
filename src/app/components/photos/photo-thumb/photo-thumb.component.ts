@@ -14,10 +14,10 @@ export class PhotoThumbComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.photo);
+    // console.log(this.photo);
   }
 
   openPhotoModal() {
-    this.photoService.openPhotoModal(this.photo.id);
+    this.photoService.openPhotoModal(this.photo);
   }
 }
