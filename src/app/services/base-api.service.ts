@@ -5,7 +5,7 @@ import { throwError, Subject, Observable } from 'rxjs';
 
 @Injectable()
 export class BaseApi {
-  domain: string = 'http://localhost:3000/';
+  domain: string = 'https://photol-api.paulgiron.com/';
   _clearSearch: Subject<boolean> = new Subject<boolean>();
 
   constructor(
