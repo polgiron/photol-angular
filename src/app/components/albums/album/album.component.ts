@@ -2,11 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BaseApi } from 'src/app/services/base-api.service';
 import { AlbumService } from 'src/app/services/album.service';
+import { fadeAnimation } from 'src/app/utils/animations';
 
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
-  styleUrls: ['./album.component.scss']
+  styleUrls: ['./album.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AlbumComponent implements OnInit, OnDestroy {
   album: any;
@@ -25,6 +27,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
       this.api.get('album/' + albumId).then((album: any) => {
         this.album = album;
         this.albumService.setAlbumTitle(this.album.title);
+        // this.photos = album.photo;
         this.reorder(album.photo);
       });
     });
@@ -50,8 +53,6 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
     console.log(out);
     this.photos = out;
-
-    // this.setState({ cards: out, columns: columns });
   }
 
   ngOnDestroy() {

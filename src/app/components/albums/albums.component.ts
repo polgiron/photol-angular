@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseApi } from 'src/app/services/base-api.service';
 import { DatePipe } from '@angular/common';
+import { fadeAnimation } from 'src/app/utils/animations';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.scss']
+  styleUrls: ['./albums.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AlbumsComponent implements OnInit {
   albums: string[] = [];

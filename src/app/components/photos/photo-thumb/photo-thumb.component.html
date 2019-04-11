@@ -1,5 +1,6 @@
 <button class="photo-thumb" (click)="openPhotoModal()">
-  <img class="image-rounded" [src]="photo.url_m" alt="">
+  <app-image [src]="photo.url_m" [width]="photo.width_m" [height]="photo.height_m"></app-image>
+  <!-- <img class="image-rounded" [src]="photo.url_m" alt=""> -->
   <!-- <span class="index">{{photo.index}}</span> -->
 </button>
 

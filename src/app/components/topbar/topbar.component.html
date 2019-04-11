@@ -1,9 +1,11 @@
 <header class="header">
-  <div class="left">
-    <a [routerLink]="['/']">
-      <h1 class="title">Photol</h1>
-    </a>
+  <div class="main-container">
+    <div class="left">
+      <a [routerLink]="['/']">
+        <h1 class="title">Photol</h1>
+      </a>
+    </div>
     <div class="album-title">{{albumTitle}}</div>
+    <app-search-input (search)="onSearch($event)"></app-search-input>
   </div>
-  <app-search-input (search)="onSearch($event)"></app-search-input>
 </header>

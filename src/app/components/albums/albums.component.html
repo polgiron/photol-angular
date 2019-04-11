@@ -1,10 +1,8 @@
-<main class="main-container">
-  <div class="main-loader-wrapper" *ngIf="!albums.length">
-    <app-loader></app-loader>
-  </div>
-  <ul class="thumbs-list" *ngIf="albums.length">
-    <li *ngFor="let album of albums">
-      <app-album-thumb [album]="album"></app-album-thumb>
-    </li>
-  </ul>
-</main>
+<div class="main-loader-wrapper" *ngIf="!albums.length" [@fadeAnimation]>
+  <app-loader></app-loader>
+</div>
+<ul class="thumbs-list main-container" *ngIf="albums.length" [@fadeAnimation]>
+  <li *ngFor="let album of albums">
+    <app-album-thumb [album]="album"></app-album-thumb>
+  </li>
+</ul>

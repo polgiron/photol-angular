@@ -1,8 +1,10 @@
 @import '~src/assets/scss/variables';
 
-.album {
-  // background: red;
-}
+// .album,
+// .main-loader-wrapper {
+//   position: absolute;
+//   width: 100%;
+// }
 
 .title {
   font-size: 2rem;
@@ -11,9 +13,11 @@
 
 .list {
   column-count: 3;
-  column-gap: 1.5 * $spacing;
+  column-gap: 1.5rem;
 }
 
 .list__entry {
-  margin-bottom: 1.5 * $spacing;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  break-inside: avoid;
 }

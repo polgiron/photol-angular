@@ -5,9 +5,9 @@
 
 .main-container {
   // width: $container-width;
-  padding: $spacing 3 * $spacing;
+  padding: 1rem 3rem;
   margin: auto;
-  margin-bottom: 3 * $spacing;
+  // margin-bottom: 3 * $spacing;
 
   // @include respond-to('small') {
   //   max-width: 100%;
@@ -15,21 +15,49 @@
 }
 
 .main-loader-wrapper {
-  width: 100%;
+  // width: 100%;
   margin-top: 12rem;
+}
+
+.album,
+.main-loader-wrapper {
+  position: absolute;
+  width: 100%;
 }
 
 .thumbs-list {
   display: grid;
-  grid-gap: 1.5 * $spacing;
-  grid-template-columns: repeat(3, minmax(240px, 1fr));
-}
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  // grid-template-columns: repeat(3, minmax(240px, 1fr));
+  margin-bottom: 1rem;
 
-.image-rounded {
-  width: 100%;
-  border-radius: .5rem;
+  img {
+    width: 100%;
+  }
 }
 
 body.is-static {
   overflow: hidden;
+}
+
+img.fade {
+  opacity: 0;
+  transition: opacity 2s $ease-out-quint .5s, box-shadow .3s $ease-out-quint;
+
+  &.is-loaded {
+    opacity: 1;
+  }
+}
+
+.photo-thumb {
+  transition: all .3s $ease-out-quint;
+
+  &:hover {
+    transform: translate3d(.3rem, -.3rem, 0);
+
+    img {
+      box-shadow: -2px 2px 15px rgba(0, 0, 0, .3) !important;
+    }
+  }
 }

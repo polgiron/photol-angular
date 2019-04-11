@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BaseApi } from 'src/app/services/base-api.service';
 import { HttpModule } from '@angular/http';
@@ -45,7 +46,8 @@ import { ImageComponent } from 'src/app/components/image/image.component';
     HttpModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     BaseApi,
