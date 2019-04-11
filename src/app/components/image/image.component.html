@@ -1,0 +1,12 @@
+<div class="wrapper" #wrapper>
+  <div class="loader" *ngIf="!isLoaded" [@fadeOutAnimation]>
+    <app-loader></app-loader>
+  </div>
+  <img
+    alt=""
+    class="fade"
+    [src]="src"
+    (load)="isLoaded=true"
+    [ngClass]="{'is-loaded': isLoaded}"
+  >
+</div>

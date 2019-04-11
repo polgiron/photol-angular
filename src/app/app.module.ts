@@ -21,6 +21,7 @@ import { PhotoModalComponent } from './components/photos/photo-modal/photo-modal
 import { PhotoService } from 'src/app/services/photo.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
+import { ImageComponent } from 'src/app/components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AlbumService } from 'src/app/services/album.service';
     TagsComponent,
     DarkroomSettingsComponent,
     PhotoModalComponent,
-    TopbarComponent
+    TopbarComponent,
+    ImageComponent
   ],
   imports: [
     HttpModule,
