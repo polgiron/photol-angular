@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { catchError, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Subject, Observable } from 'rxjs';
 
 @Injectable()
 export class BaseApi {
   domain: string = 'http://localhost:3000/';
+  _clearSearch: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private http: Http
   ) { }
+
+  clearSearchChannel(): Observable<boolean> {
+    return this._clearSearch.asObservable();
+  }
 
   get(method: string) {
     return this.http.get(this.domain + method)
@@ -24,6 +29,10 @@ export class BaseApi {
 
   getPhotoUrl(farm: number, server: number, id: number, secret: number, size?: string) {
     return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_${size}.jpg`;
+  }
+
+  clearSearchInput() {
+    this._clearSearch.next(true);
   }
 
   public handleError = error => {

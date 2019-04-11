@@ -1,0 +1,10 @@
+.list {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+.list__entry {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  break-inside: avoid;
+}

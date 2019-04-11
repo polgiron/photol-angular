@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BaseApi } from 'src/app/services/base-api.service';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-input',
@@ -7,34 +9,45 @@ import { BaseApi } from 'src/app/services/base-api.service';
   styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent implements OnInit {
-  @Output() search: EventEmitter<Object> = new EventEmitter();
+  private _alive: boolean = true;
   searchValue: string = '';
   timeout;
 
   constructor(
+    private router: Router,
     private api: BaseApi
   ) { }
 
   ngOnInit() {
-
+    this.api.clearSearchChannel()
+      .pipe(takeWhile(() => this._alive))
+      .subscribe(clear => {
+        this.searchValue = '';
+      });
   }
 
   onKeyUp() {
     clearTimeout(this.timeout);
-    if (this.searchValue != '') {
+    // if (this.searchValue != '') {
       this.timeout = setTimeout(() => {
         this.performSearch();
       }, 500);
-    } else {
-      this.search.emit(null);
-    }
+    // } else {
+    //   this.search.emit(null);
+    // }
   }
 
   performSearch() {
-    console.log('SEARCH', this.searchValue);
-    this.api.get('search/' + this.searchValue).then((searchResults: any) => {
-      console.log(searchResults.photo);
-      this.search.emit(searchResults.photo);
+    // console.log(this.searchValue.replace(' ', '+'));
+
+    this.router.navigate(['/', 'search'], {
+      queryParams: {
+        value: this.searchValue
+      }
     });
+  }
+
+  ngOnDestroy() {
+    this._alive = false;
   }
 }

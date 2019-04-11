@@ -1,9 +1,5 @@
 <app-topbar></app-topbar>
 
-<router-outlet *ngIf="!searchResults"></router-outlet>
-
-<div class="search-results" *ngIf="searchResults">
-  hello
-</div>
+<router-outlet></router-outlet>
 
 <app-photo-modal *ngIf="modalPhoto" [photo]="modalPhoto"></app-photo-modal>

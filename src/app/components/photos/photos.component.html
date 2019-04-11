@@ -1,3 +1,5 @@
-<p>
-  photos works!
-</p>
+<ul class="list">
+  <li class="list__entry" *ngFor="let photo of photos">
+    <app-photo-thumb [photo]="photo"></app-photo-thumb>
+  </li>
+</ul>

@@ -4,6 +4,7 @@ import { AlbumsComponent } from 'src/app/components/albums/albums.component';
 import { AlbumComponent } from 'src/app/components/albums/album/album.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { PhotoComponent } from 'src/app/components/photos/photo/photo.component';
+import { SearchComponent } from 'src/app/components/search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'albums', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: 'albums', component: AlbumsComponent },
       { path: 'albums/:albumId', component: AlbumComponent },
-      { path: 'photos/:photoId', component: PhotoComponent }
+      { path: 'photos/:photoId', component: PhotoComponent },
+      { path: 'search', component: SearchComponent }
     ]
   },
   { path: '**', redirectTo: '' }

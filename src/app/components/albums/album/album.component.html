@@ -1,11 +1,6 @@
-<div class="main-loader-wrapper" *ngIf="!photos" [@fadeAnimation]>
+<div class="main-loader-wrapper" *ngIf="!album" [@fadeAnimation]>
   <app-loader></app-loader>
 </div>
-<div class="album main-container" *ngIf="photos" [@fadeAnimation]>
-  <!-- <h2 class="title">{{album.title}}</h2> -->
-  <ul class="list">
-    <li class="list__entry" *ngFor="let photo of photos">
-      <app-photo-thumb [photo]="photo"></app-photo-thumb>
-    </li>
-  </ul>
+<div class="album main-container" *ngIf="album" [@fadeAnimation]>
+  <app-photos [photos]="album.photo"></app-photos>
 </div>

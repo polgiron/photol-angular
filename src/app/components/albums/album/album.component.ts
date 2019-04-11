@@ -12,8 +12,6 @@ import { fadeAnimation } from 'src/app/utils/animations';
 })
 export class AlbumComponent implements OnInit, OnDestroy {
   album: any;
-  photos: any;
-  numberOfColumns: number = 3;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,32 +25,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
       this.api.get('album/' + albumId).then((album: any) => {
         this.album = album;
         this.albumService.setAlbumTitle(this.album.title);
-        // this.photos = album.photo;
-        this.reorder(album.photo);
       });
     });
-  }
-
-  reorder(array) {
-    array.forEach((element, index) => {
-      element.index = index;
-    });
-
-    const out = [];
-    let col = 0;
-
-    while (col < this.numberOfColumns) {
-      for (let i = 0; i < array.length; i += this.numberOfColumns) {
-        let _val = array[i + col];
-        if (_val !== undefined) {
-          out.push(_val);
-        }
-      }
-      col++;
-    }
-
-    console.log(out);
-    this.photos = out;
   }
 
   ngOnDestroy() {

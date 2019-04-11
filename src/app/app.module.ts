@@ -23,6 +23,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
 import { ImageComponent } from 'src/app/components/image/image.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ImageComponent } from 'src/app/components/image/image.component';
     DarkroomSettingsComponent,
     PhotoModalComponent,
     TopbarComponent,
-    ImageComponent
+    ImageComponent,
+    SearchComponent
   ],
   imports: [
     HttpModule,
