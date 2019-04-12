@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { takeWhile } from 'rxjs/operators';
-import { Params, ActivatedRoute, Router } from '@angular/router';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private photoService: PhotoService
+    private photoService: PhotoService,
   ) { }
 
   ngOnInit() {
