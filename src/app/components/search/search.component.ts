@@ -3,6 +3,7 @@ import { BaseApi } from 'src/app/services/base-api.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { AlbumService } from 'src/app/services/album.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-search',
@@ -12,9 +13,11 @@ import { AlbumService } from 'src/app/services/album.service';
 })
 export class SearchComponent implements OnInit {
   photos: any;
+  searchValue: string;
 
   constructor(
     private api: BaseApi,
+    private utils: Utils,
     private route: ActivatedRoute,
     private router: Router,
     private albumService: AlbumService
@@ -24,7 +27,10 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       const value = params['value'];
       if (value) {
-        this.performSearch(value);
+        if (this.searchValue != value) {
+          this.searchValue = value;
+          this.performSearch(value);
+        }
       } else {
         this.router.navigate(['/']);
       }
@@ -47,6 +53,6 @@ export class SearchComponent implements OnInit {
 
   ngOnDestroy() {
     this.albumService.setAlbumTitle('');
-    this.api.clearSearchInput();
+    this.utils.clearSearchInput();
   }
 }

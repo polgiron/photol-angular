@@ -6,16 +6,14 @@
       <app-image [src]="imageSrc" [width]="photo.width_m" [height]="photo.height_m"></app-image>
     </div>
     <div class="right" #right>
-      <div class="inner">
-        <h2 class="title">{{photo.title || 'Untitled'}}</h2>
-        <p class="description">{{photo.description._content || 'No description'}}</p>
-        <div class="tags-wrapper">
-          <app-tags [tags]="tags"></app-tags>
-        </div>
-        <div class="settings-wrapper">
-          <app-darkroom-settings [time]="time" [contrast]="contrast" [aperture]="aperture"></app-darkroom-settings>
-        </div>
-      </div>
+      <app-photo-infos
+        [title]="photo.title"
+        [description]="photo.description._content"
+        [tags]="tags"
+        [time]="time"
+        [contrast]="contrast"
+        [aperture]="aperture"
+      ></app-photo-infos>
     </div>
   </div>
 </div>

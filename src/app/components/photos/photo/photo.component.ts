@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BaseApi } from 'src/app/services/base-api.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-photo',
@@ -8,7 +9,6 @@ import { BaseApi } from 'src/app/services/base-api.service';
   styleUrls: ['./photo.component.scss']
 })
 export class PhotoComponent implements OnInit {
-  @Input() photoId: number;
   photo: any;
   isLoaded: boolean = false;
   isVertical: boolean = false;
@@ -19,17 +19,18 @@ export class PhotoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private api: BaseApi
+    private api: BaseApi,
+    private utils: Utils
   ) { }
 
   ngOnInit() {
-    if (this.photoId) {
-      this.getPhoto(this.photoId);
-    } else {
+    // if (this.photoId) {
+    //   this.getPhoto(this.photoId);
+    // } else {
       this.route.params.subscribe((params: Params) => {
         this.getPhoto(params['photoId']);
       });
-    }
+    // }
   }
 
   getPhoto(photoId: number) {
@@ -54,7 +55,7 @@ export class PhotoComponent implements OnInit {
   extendPhoto(photo: any) {
     console.log(photo);
 
-    photo.photoUrl = this.api.getPhotoUrl(photo.farm, photo.server, photo.id, photo.secret, 'b');
+    photo.photoUrl = this.utils.getPhotoUrl(photo.farm, photo.server, photo.id, photo.secret, 'b');
 
     photo.tags.tag.forEach(tag => {
       if (tag.raw.substring(0, 1).includes('$')) {

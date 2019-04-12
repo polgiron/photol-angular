@@ -48,26 +48,6 @@
   }
 }
 
-.title {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: $spacing;
-  color: $color-darkgray;
-
-  @include respond-to('small') {
-    font-size: 1.2rem;
-    margin-bottom: .5rem;
-  }
-}
-
-.description {
-  color: $color-mediumgray;
-  font-weight: 300;
-  line-height: 1.5;
-  font-size: .9rem;
-  font-style: italic;
-}
-
 .close-button {
   position: absolute;
   top: .5rem;
@@ -83,17 +63,4 @@
     top: 2px;
     color: $color-lightgray;
   }
-}
-
-.tags-wrapper,
-.settings-wrapper {
-  margin-top: 2rem;
-}
-
-.settings-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem 1rem;
 }

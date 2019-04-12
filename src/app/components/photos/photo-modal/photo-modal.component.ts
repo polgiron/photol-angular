@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
-import { BaseApi } from 'src/app/services/base-api.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-photo-modal',
@@ -21,8 +22,10 @@ export class PhotoModalComponent implements OnInit {
   aperture: number;
 
   constructor(
-    private api: BaseApi,
-    private photoService: PhotoService
+    private utils: Utils,
+    private photoService: PhotoService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -40,11 +43,26 @@ export class PhotoModalComponent implements OnInit {
     // });
 
     this.extendPhoto();
-
     this.setDialogWidth();
+    this.setQueryParameter();
 
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);
+  }
+
+  setQueryParameter() {
+    // changes the route without moving from the current view or
+    // triggering a navigation event,
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        open: this.photo.id
+      },
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      // skipLocationChange: true
+      // do not trigger navigation
+    });
   }
 
   onWindowResize() {
@@ -76,7 +94,7 @@ export class PhotoModalComponent implements OnInit {
 
   extendPhoto() {
     // Image src
-    this.imageSrc = this.api.getPhotoUrl(this.photo.farm, this.photo.server, this.photo.id, this.photo.secret, 'b');
+    this.imageSrc = this.utils.getPhotoUrl(this.photo.farm, this.photo.server, this.photo.id, this.photo.secret, 'b');
 
     // Extend tags
     this.photo.tags.split(' ').forEach(tag => {
@@ -98,5 +116,6 @@ export class PhotoModalComponent implements OnInit {
 
   ngOnDestroy() {
     window.removeEventListener('resize', this._resizeListener);
+    this.utils.clearOpenQuery();
   }
 }

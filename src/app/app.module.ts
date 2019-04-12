@@ -24,6 +24,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { AlbumService } from 'src/app/services/album.service';
 import { ImageComponent } from 'src/app/components/image/image.component';
 import { SearchComponent } from './components/search/search.component';
+import { Utils } from 'src/app/utils/utils';
+import { PhotoInfosComponent } from './components/photos/photo-infos/photo-infos.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { SearchComponent } from './components/search/search.component';
     PhotoModalComponent,
     TopbarComponent,
     ImageComponent,
-    SearchComponent
+    SearchComponent,
+    PhotoInfosComponent
   ],
   imports: [
     HttpModule,
@@ -55,7 +58,8 @@ import { SearchComponent } from './components/search/search.component';
     BaseApi,
     DatePipe,
     PhotoService,
-    AlbumService
+    AlbumService,
+    Utils
   ],
   bootstrap: [AppComponent]
 })

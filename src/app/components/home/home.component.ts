@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { takeWhile } from 'rxjs/operators';
+import { Params, ActivatedRoute, Router } from '@angular/router';
+import { BaseApi } from 'src/app/services/base-api.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,19 @@ export class HomeComponent implements OnInit {
   modalPhoto: any;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private photoService: PhotoService
   ) { }
 
   ngOnInit() {
+    const params: any = this.route.queryParams;
+    const photoId = params.value.open;
+
+    if (photoId) {
+      this.router.navigate(['/', 'photos', photoId]);
+    }
+
     this.photoService.modalPhotoChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe(modalPhoto => {

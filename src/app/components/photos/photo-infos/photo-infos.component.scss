@@ -1,0 +1,33 @@
+@import '~src/assets/scss/variables';
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: $color-darkgray;
+
+  @include respond-to('small') {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+  }
+}
+
+.description {
+  color: $color-mediumgray;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: .9rem;
+  font-style: italic;
+}
+
+.tags-wrapper{
+  margin-top: 2rem;
+}
+
+.settings-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 1rem;
+}

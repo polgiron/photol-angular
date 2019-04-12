@@ -1,7 +1,10 @@
 <a class="album-thumb" [routerLink]="['/', 'albums', album.id]">
   <div class="cover">
-    <!-- <img class="image-rounded" [src]="album.primary_photo_extras.url_m" alt=""> -->
-    <app-image [src]="album.primary_photo_extras.url_m" [width]="album.primary_photo_extras.width_m" [height]="album.primary_photo_extras.height_m"></app-image>
+    <app-image
+      [src]="album.primary_photo_extras.url_m"
+      [width]="album.primary_photo_extras.width_m"
+      [height]="album.primary_photo_extras.height_m"
+    ></app-image>
   </div>
   <div class="infos">
     <h2 class="title">{{album.title._content}}</h2>

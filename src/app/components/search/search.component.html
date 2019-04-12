@@ -2,6 +2,8 @@
   <app-loader></app-loader>
 </div>
 <div class="album main-container" *ngIf="photos" [@fadeAnimation]>
-  <p class="no-results" *ngIf="!photos.length">No search results :(</p>
-  <app-photos [photos]="photos" *ngIf="photos.length"></app-photos>
+  <div class="inner">
+    <p class="no-results" *ngIf="!photos.length">No search results :(</p>
+    <app-photos [photos]="photos" *ngIf="photos.length"></app-photos>
+  </div>
 </div>

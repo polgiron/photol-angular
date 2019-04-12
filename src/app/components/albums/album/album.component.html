@@ -2,5 +2,7 @@
   <app-loader></app-loader>
 </div>
 <div class="album main-container" *ngIf="album" [@fadeAnimation]>
-  <app-photos [photos]="album.photo"></app-photos>
+  <div class="inner">
+    <app-photos [photos]="album.photo"></app-photos>
+  </div>
 </div>

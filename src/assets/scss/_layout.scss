@@ -4,10 +4,12 @@
 // }
 
 .main-container {
-  // width: $container-width;
   padding: 1rem 3rem;
-  margin: auto;
-  // margin-bottom: 3 * $spacing;
+
+  .inner {
+    max-width: $container-width;
+    margin: auto;
+  }
 
   // @include respond-to('small') {
   //   max-width: 100%;

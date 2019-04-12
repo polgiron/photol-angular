@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BaseApi } from 'src/app/services/base-api.service';
 import { takeWhile } from 'rxjs/operators';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-search-input',
@@ -15,11 +15,11 @@ export class SearchInputComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private api: BaseApi
+    private utils: Utils
   ) { }
 
   ngOnInit() {
-    this.api.clearSearchChannel()
+    this.utils.clearSearchChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe(clear => {
         this.searchValue = '';
