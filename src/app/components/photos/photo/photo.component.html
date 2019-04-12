@@ -1,14 +1,10 @@
-<div class="main-loader-wrapper" *ngIf="!photo">
+<div class="main-loader-wrapper" *ngIf="!photo" [@fadeAnimation]>
   <app-loader></app-loader>
 </div>
-<div class="main-container" *ngIf="photo">
-  <div class="photo inner" [ngClass]="{'is-vertical': isVertical}">
+<div class="main-container" *ngIf="photo" [@fadeAnimation]>
+  <div class="inner">
     <div class="left">
-      <img
-        [ngClass]="{'is-loaded': isLoaded}"
-        [src]="photo.photoUrl"
-        alt=""
-      >
+      <img [src]="photo.photoUrl" alt="">
     </div>
     <div class="right">
       <app-photo-infos
@@ -18,6 +14,7 @@
         [time]="time"
         [contrast]="contrast"
         [aperture]="aperture"
+        [albums]="albums"
       ></app-photo-infos>
     </div>
   </div>

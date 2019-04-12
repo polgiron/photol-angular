@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-photo-infos',
@@ -12,13 +13,21 @@ export class PhotoInfosComponent implements OnInit {
   @Input() time: string;
   @Input() contrast: string;
   @Input() aperture: string;
+  @Input() albums: any;
 
-  constructor() { }
+  constructor(
+    private photoService: PhotoService
+  ) { }
 
   ngOnInit() {
-    console.log(this.description);
+    console.log(this.tags);
+
     if (this.description == '') {
       this.description = 'No description';
     }
+  }
+
+  onClickAlbum() {
+    this.photoService.closePhotoModal();
   }
 }

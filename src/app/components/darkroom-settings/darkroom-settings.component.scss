@@ -1,27 +1,9 @@
 @import '~src/assets/scss/variables';
 
-ul {
-  // border: 1px solid $color-mediumgray;
-  border-radius: .5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
 li {
-  text-align: center;
-  // padding: .5rem;
-
-  // &:not(:last-child) {
-  //   border-right: 1px solid $color-mediumgray;
-  // }
+  line-height: 1.5;
 }
 
 .value {
-  // font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.title {
   color: $color-mediumgray;
-  font-size: .9rem;
 }

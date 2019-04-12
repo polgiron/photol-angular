@@ -20,6 +20,7 @@ export class PhotoModalComponent implements OnInit {
   time: number;
   contrast: number;
   aperture: number;
+  albums: any;
 
   constructor(
     private utils: Utils,
@@ -29,22 +30,13 @@ export class PhotoModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.api.get('photo/' + this.photo.id).then((photo: any) => {
-    //   console.log(photo);
-
-    //   this.photo.title = photo.title._content;
-    //   this.photo.description = photo.description._content;
-    //   this.photo.tags = photo.tags;
-
-    //   console.log(this.photo.title);
-    //   console.log(this.photo.description);
-
-    //   this.extendTags();
-    // });
-
     this.extendPhoto();
     this.setDialogWidth();
     this.setQueryParameter();
+
+    this.photoService.getContext(this.photo.id).then(albums => {
+      this.albums = albums;
+    });
 
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);

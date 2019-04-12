@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { BaseApi } from 'src/app/services/base-api.service';
 
 @Injectable()
 export class PhotoService {
   private _modalPhoto: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  constructor() { }
+  constructor(
+    private api: BaseApi
+  ) { }
 
   public modalPhotoChannel(): Observable<any> {
     return this._modalPhoto.asObservable();
@@ -19,5 +22,13 @@ export class PhotoService {
   closePhotoModal() {
     this._modalPhoto.next(null);
     document.body.classList.remove('is-static');
+  }
+
+  getPhoto(photoId: number) {
+    return this.api.get('photo/' + photoId);
+  }
+
+  getContext(photoId: number) {
+    return this.api.get(`photo/${photoId}/context`);
   }
 }

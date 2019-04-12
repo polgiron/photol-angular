@@ -1,14 +1,14 @@
 <ul>
   <li *ngIf="time">
-    <div class="value">{{time}}</div>
-    <div class="title">Time</div>
+    <span class="title">Time: </span>
+    <span class="value">{{time}}</span>
   </li>
   <li *ngIf="aperture">
-    <div class="value">-{{aperture}}</div>
-    <div class="title">Aperture</div>
+    <span class="title">Aperture: </span>
+    <span class="value">-{{aperture}}</span>
   </li>
   <li *ngIf="contrast">
-    <div class="value">{{contrast}}</div>
-    <div class="title">Contrast</div>
+    <span class="title">Contrast: </span>
+    <span class="value">{{contrast}}</span>
   </li>
 </ul>
