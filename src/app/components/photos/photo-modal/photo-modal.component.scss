@@ -64,3 +64,51 @@
     color: $color-lightgray;
   }
 }
+
+.left {
+  position: relative;
+  overflow: hidden;
+
+  &:hover .controls {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .2s ease-out;
+  opacity: 0;
+  transform: scale(1.07);
+
+  >button {
+    position: absolute;
+    top: 0;
+    width: 5rem;
+    height: 100%;
+    // transform: translateY(-50%);
+    // background: rgba($color-white, .1);
+    display: flex;
+
+    i {
+      margin: auto;
+      color: $color-white;
+      font-size: 3.2rem;
+      text-shadow: 1px 1px 5px rgba($color-black, .05);
+    }
+  }
+
+  .prev {
+    // left: .5rem;
+    left: 0;
+  }
+
+  .next {
+    // right: .5rem;
+    right: 0;
+  }
+}

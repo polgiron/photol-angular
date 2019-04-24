@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-photos',
@@ -8,10 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PhotosComponent implements OnInit {
   @Input() photos: any;
   numberOfColumns: number = 3;
+  reorderedPhotos;
 
-  constructor() { }
+  constructor(
+    private photoService: PhotoService
+  ) { }
 
   ngOnInit() {
+    this.photoService.currentPhotos = this.photos;
     this.reorder(this.photos);
   }
 
@@ -33,7 +38,7 @@ export class PhotosComponent implements OnInit {
       col++;
     }
 
-    console.log(out);
-    this.photos = out;
+    this.reorderedPhotos = out;
+    console.log(this.reorderedPhotos);
   }
 }

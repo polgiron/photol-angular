@@ -11,8 +11,23 @@ import { Utils } from 'src/app/utils/utils';
 export class PhotoModalComponent implements OnInit {
   @ViewChild('left') leftElement: ElementRef;
   @ViewChild('right') rightElement: ElementRef;
-  @Input() photo: any;
+  @Input() set photo(value: any) {
+    // console.log(value);
+
+    // this.resetLastPhoto();
+
+    this._photo = value;
+
+    this.extendPhoto();
+    this.setDialogWidth();
+    this.setQueryParameter();
+
+    this.photoService.getContext(this.photo.id).then(albums => {
+      this.albums = albums;
+    });
+  };
   private _resizeListener: EventListener;
+  private _photo: any;
   imageSrc: string;
   padding: number = 32;
   mobileBreakpoint: number = 767;
@@ -22,6 +37,10 @@ export class PhotoModalComponent implements OnInit {
   aperture: number;
   albums: any;
 
+  get photo() {
+    return this._photo;
+  }
+
   constructor(
     private utils: Utils,
     private photoService: PhotoService,
@@ -30,16 +49,12 @@ export class PhotoModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.extendPhoto();
-    this.setDialogWidth();
-    this.setQueryParameter();
-
-    this.photoService.getContext(this.photo.id).then(albums => {
-      this.albums = albums;
-    });
-
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);
+  }
+
+  resetLastPhoto() {
+    this.imageSrc = null;
   }
 
   setQueryParameter() {
@@ -100,6 +115,14 @@ export class PhotoModalComponent implements OnInit {
         this.tags.push(tag);
       }
     });
+  }
+
+  onClickNext() {
+    this.photoService.goNextModal();
+  }
+
+  onClickPrev() {
+    this.photoService.goPrevModal();
   }
 
   close() {
