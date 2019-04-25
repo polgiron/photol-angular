@@ -30,7 +30,7 @@
 .thumbs-list {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   // grid-template-columns: repeat(3, minmax(240px, 1fr));
   margin-bottom: 1rem;
 
@@ -56,10 +56,10 @@ img.fade {
   transition: all .3s $ease-out-quint;
 
   &:hover {
-    transform: translate3d(.3rem, -.3rem, 0);
+    transform: translate3d(.2rem, -.2rem, 0);
 
     img {
-      box-shadow: -2px 2px 15px rgba(0, 0, 0, .3) !important;
+      box-shadow: -5px 5px 15px rgba(0, 0, 0, .3) !important;
     }
   }
 }
