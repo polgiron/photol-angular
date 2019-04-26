@@ -11,9 +11,13 @@
     margin: auto;
   }
 
-  // @include respond-to('small') {
-  //   max-width: 100%;
-  // }
+  @include respond-to('medium') {
+    padding: 1rem 1.5rem;
+  }
+
+  @include respond-to('small') {
+    padding: 1rem .5rem;
+  }
 }
 
 .main-loader-wrapper {

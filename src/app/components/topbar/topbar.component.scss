@@ -8,12 +8,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include respond-to('small') {
+    display: block;
+    text-align: center;
+  }
 }
 
-.left {
-  display: flex;
-  align-items: baseline;
-}
+// .left {
+  // display: flex;
+  // align-items: baseline;
+// }
 
 .title {
   font-size: 2rem;
