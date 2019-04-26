@@ -65,7 +65,8 @@ img.fade {
   transition: 0s all !important;
 }
 
-.photo-thumb {
+.photo-thumb,
+.album-thumb {
   transition: all .3s $ease-out-quint;
 
   &:hover .image-wrapper {
