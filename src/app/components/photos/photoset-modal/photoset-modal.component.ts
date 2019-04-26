@@ -9,6 +9,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 export class PhotosetModalComponent implements OnInit {
   @Input() index: number;
   photos: any;
+  displayControl: boolean = true;
 
   constructor(
     private photoService: PhotoService
@@ -16,6 +17,7 @@ export class PhotosetModalComponent implements OnInit {
 
   ngOnInit() {
     this.photos = this.photoService.currentPhotos;
+    this.displayControl = this.photos.length > 1;
   }
 
   getPrevIndex(index: number) {
