@@ -2,4 +2,4 @@
 
 <router-outlet></router-outlet>
 
-<app-photo-modal *ngIf="modalPhoto" [photo]="modalPhoto"></app-photo-modal>
+<app-photoset-modal *ngIf="index != undefined" [index]="index" [@fadeFastAnimation]></app-photoset-modal>

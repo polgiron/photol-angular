@@ -1,114 +1,23 @@
 @import '~src/assets/scss/variables';
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  padding: 2rem;
-
-  @include respond-to('small') {
-    padding: 1rem;
-  }
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba($color-darkgray, .95);
-}
-
-.dialog {
-  margin: auto;
-  max-height: 100%;
-  position: relative;
-  z-index: 1;
-  display: flex;
-
-  @include respond-to('small') {
-    display: block;
-    width: 100%;
-  }
-}
-
-.right {
-  width: 18rem;
-  padding: 2rem;
-  background: $color-white;
-  position: relative;
-
-  @include respond-to('small') {
-    padding: 1rem;
-    width: 100%;
-  }
-}
-
-.close-button {
-  position: absolute;
-  top: .5rem;
-  right: .5rem;
-  width: 1.7rem;
-  height: 1.7rem;
-  z-index: 2;
-
-  i {
-    font-size: 2.4em;
-    margin: auto;
-    position: relative;
-    top: 2px;
-    color: $color-lightgray;
-  }
-}
-
-.left {
+.photo-wrapper {
   position: relative;
   overflow: hidden;
 
-  &:hover .controls {
+  &:hover .infos {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
-.controls {
+.infos {
   position: absolute;
-  top: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
-  transition: all .2s ease-out;
+  // background: rgba($color-black, .8);
+  background: linear-gradient(to bottom, transparent 0%, rgba($color-black, .4) 100%);
+  color: $color-white;
+  padding: .7rem 1rem;
   opacity: 0;
-  transform: scale(1.07);
-
-  >button {
-    position: absolute;
-    top: 0;
-    width: 5rem;
-    height: 100%;
-    // transform: translateY(-50%);
-    // background: rgba($color-white, .1);
-    display: flex;
-
-    i {
-      margin: auto;
-      color: $color-white;
-      font-size: 3.2rem;
-      text-shadow: 1px 1px 5px rgba($color-black, .05);
-    }
-  }
-
-  .prev {
-    // left: .5rem;
-    left: 0;
-  }
-
-  .next {
-    // right: .5rem;
-    right: 0;
-  }
+  transition: all .2s;
 }

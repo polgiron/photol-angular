@@ -20,6 +20,16 @@ export const fadeAnimation = trigger('fadeAnimation', [
   ])
 ]);
 
+export const fadeFastAnimation = trigger('fadeFastAnimation', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('.1s ease-out')
+  ]),
+  transition(':leave', [
+    animate('.1s ease-out', style({ opacity: 0 }))
+  ])
+]);
+
 export const fadeScaleAnimation = trigger('fadeScaleAnimation', [
   transition(':enter', [
     style({ opacity: 0, transform: 'scale(.6)', transformOrigin: 'center center' }),

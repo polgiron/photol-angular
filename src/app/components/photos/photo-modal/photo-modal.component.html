@@ -1,16 +1,7 @@
-<div class="modal">
-  <div class="overlay" (click)="close()"></div>
-  <div class="dialog">
-    <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
-    <div class="left" #left>
-      <app-image [src]="imageSrc" [width]="photo.width_m" [height]="photo.height_m"></app-image>
-      <div class="controls">
-        <button class="prev" (click)="onClickPrev()"><i class="material-icons">navigate_before</i></button>
-        <button class="next" (click)="onClickNext()"><i class="material-icons">navigate_next</i></button>
-      </div>
-    </div>
-    <div class="right" #right>
-      <app-photo-infos
+  <div class="photo-wrapper" #photoWrapper>
+    <app-image [src]="imageSrc" [width]="photo.width_m" [height]="photo.height_m"></app-image>
+    <div class="infos">
+      <!-- <app-photo-infos
         [title]="photo.title"
         [description]="photo.description._content"
         [tags]="tags"
@@ -18,7 +9,7 @@
         [contrast]="contrast"
         [aperture]="aperture"
         [albums]="albums"
-      ></app-photo-infos>
+      ></app-photo-infos> -->
+      <app-tags [tags]="tags"></app-tags>
     </div>
   </div>
-</div>

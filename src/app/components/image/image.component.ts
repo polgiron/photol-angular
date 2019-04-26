@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { fadeOutAnimation } from 'src/app/utils/animations';
 
 @Component({
@@ -9,6 +9,7 @@ import { fadeOutAnimation } from 'src/app/utils/animations';
 })
 export class ImageComponent implements OnInit {
   @ViewChild('wrapper') wrapper: ElementRef;
+  // @Output() isImageLoaded: EventEmitter<boolean> = new EventEmitter();
   @Input() width: number;
   @Input() height: number;
   @Input() set src(value: string) {
@@ -32,5 +33,10 @@ export class ImageComponent implements OnInit {
   setPadding() {
     const ratio = this.height / this.width * 100;
     this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
+  }
+
+  onLoad() {
+    // this.isImageLoaded.emit(true);
+    this.isLoaded = true;
   }
 }

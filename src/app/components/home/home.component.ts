@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { takeWhile } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { fadeFastAnimation } from 'src/app/utils/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [fadeFastAnimation]
 })
 export class HomeComponent implements OnInit {
   private _alive: boolean = true;
-  modalPhoto: any;
+  index: number;
 
   constructor(
     private router: Router,
@@ -23,14 +25,13 @@ export class HomeComponent implements OnInit {
     const photoId = params.value.open;
 
     if (photoId) {
-      this.router.navigate(['/', 'photos', photoId]);
+      // this.router.navigate(['/', 'photos', photoId]);
     }
 
     this.photoService.modalPhotoChannel()
       .pipe(takeWhile(() => this._alive))
-      .subscribe(modalPhoto => {
-        // console.log(modalPhoto);
-        this.modalPhoto = modalPhoto;
+      .subscribe((index: number) => {
+        this.index = index;
       });
   }
 

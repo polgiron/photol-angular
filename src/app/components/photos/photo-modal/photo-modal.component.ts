@@ -9,8 +9,7 @@ import { Utils } from 'src/app/utils/utils';
   styleUrls: ['./photo-modal.component.scss']
 })
 export class PhotoModalComponent implements OnInit {
-  @ViewChild('left') leftElement: ElementRef;
-  @ViewChild('right') rightElement: ElementRef;
+  @ViewChild('photoWrapper') photoWrapperElement: ElementRef;
   @Input() set photo(value: any) {
     // console.log(value);
 
@@ -77,9 +76,8 @@ export class PhotoModalComponent implements OnInit {
 
     const oriWidth = this.photo.width_m;
     const oriHeight = this.photo.height_m;
-    const rightWidth = this.rightElement.nativeElement.clientWidth;
     const maxHeight = window.innerHeight - 2 * this.padding;
-    const maxWidth = window.innerWidth - 2 * this.padding - rightWidth;
+    const maxWidth = window.innerWidth - 2 * this.padding;
 
     let newWidth = oriWidth * maxHeight / oriHeight;
     let newHeight = maxHeight;
@@ -89,8 +87,8 @@ export class PhotoModalComponent implements OnInit {
       newHeight = oriHeight * newWidth / oriWidth;
     }
 
-    this.leftElement.nativeElement.style.width = newWidth + 'px';
-    this.leftElement.nativeElement.style.height = newHeight + 'px';
+    this.photoWrapperElement.nativeElement.style.width = newWidth + 'px';
+    this.photoWrapperElement.nativeElement.style.height = newHeight + 'px';
   }
 
   extendPhoto() {
@@ -109,18 +107,6 @@ export class PhotoModalComponent implements OnInit {
         this.tags.push(tag);
       }
     });
-  }
-
-  onClickNext() {
-    this.photoService.goNextModal();
-  }
-
-  onClickPrev() {
-    this.photoService.goPrevModal();
-  }
-
-  close() {
-    this.photoService.closePhotoModal();
   }
 
   ngOnDestroy() {

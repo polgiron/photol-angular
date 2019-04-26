@@ -26,6 +26,7 @@ import { ImageComponent } from 'src/app/components/image/image.component';
 import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
 import { PhotoInfosComponent } from './components/photos/photo-infos/photo-infos.component';
+import { PhotosetModalComponent } from './components/photos/photoset-modal/photoset-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PhotoInfosComponent } from './components/photos/photo-infos/photo-infos
     TopbarComponent,
     ImageComponent,
     SearchComponent,
-    PhotoInfosComponent
+    PhotoInfosComponent,
+    PhotosetModalComponent
   ],
   imports: [
     HttpModule,
