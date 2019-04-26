@@ -63,3 +63,7 @@ img.fade {
     }
   }
 }
+
+.image-wrapper .loader {
+  border-color: $color-main-border transparent transparent $color-main-border !important;
+}

@@ -8,7 +8,7 @@ $loader-width: 4rem;
   width: $loader-width;
   height: $loader-width;
   border-style: solid;
-  border-color: $color-lightgray transparent transparent $color-lightgray;
+  border-color: $color-background-2 transparent transparent $color-background-2;
   border-image: initial;
   border-radius: 50%;
   border-width: $border-width;
