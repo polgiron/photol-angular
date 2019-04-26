@@ -12,11 +12,16 @@ export class ImageComponent implements OnInit {
   // @Output() isImageLoaded: EventEmitter<boolean> = new EventEmitter();
   @Input() width: number;
   @Input() height: number;
+  @Input() cover: boolean = false;
   @Input() set src(value: string) {
     this.isLoaded = false;
     this._src = value;
-    this.setPadding();
+
+    // if (!this.cover) {
+      this.setPadding();
+    // }
   };
+
   private _src: string;
   isLoaded: boolean = false;
 
@@ -31,7 +36,12 @@ export class ImageComponent implements OnInit {
   }
 
   setPadding() {
-    const ratio = this.height / this.width * 100;
+    let ratio = this.height / this.width * 100;
+
+    if (this.cover) {
+      ratio = 36;
+    }
+
     this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
   }
 

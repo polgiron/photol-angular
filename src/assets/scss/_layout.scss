@@ -52,15 +52,25 @@ img.fade {
   }
 }
 
+.image-wrapper {
+  transition: .2s all;
+}
+
+.modal .image-wrapper {
+  border: 0 !important;
+  transition: 0s all !important;
+}
+
 .photo-thumb {
   transition: all .3s $ease-out-quint;
 
-  &:hover {
-    transform: translate3d(.2rem, -.2rem, 0);
+  &:hover .image-wrapper {
+    // transform: translate3d(.2rem, -.2rem, 0);
+    border-color: $color-mediumgray;
 
-    img {
-      box-shadow: -5px 5px 15px rgba(0, 0, 0, .3) !important;
-    }
+    // img {
+    //   box-shadow: -5px 5px 15px rgba(0, 0, 0, .3) !important;
+    // }
   }
 }
 

@@ -32,4 +32,9 @@ export class PhotoService {
   getContext(photoId: number) {
     return this.api.get(`photo/${photoId}/context`);
   }
+
+  getBigThumbnail(farm: number, server: number, id: number, secret: number) {
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_b.jpg`;
+    // return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_[mstzb].jpg`;
+  }
 }

@@ -40,6 +40,11 @@
   transform: translate3d(-50%, -50%, 0);
   z-index: 1;
   visibility: hidden;
+  border: 1px solid $color-main-border;
+
+  &:hover .close-button {
+    opacity: .5;
+  }
 
   &.is-visible {
     visibility: visible;
@@ -79,13 +84,9 @@
   top: 0;
   width: 5rem;
   height: 100%;
-  // transform: translateY(-50%);
-  // background: rgba($color-white, .1);
   display: flex;
   transition: all .2s ease-out;
   opacity: 0;
-  // opacity: .3;
-  // pointer-events: all;
   z-index: 1;
 
   &:hover {
@@ -101,13 +102,11 @@
 }
 
 .prev {
-  // left: .5rem;
   left: 0;
   transform: translate3d(-1.5rem, 0, 0);
 }
 
 .next {
-  // right: .5rem;
   right: 0;
   transform: translate3d(1.5rem, 0, 0);
 }
@@ -119,8 +118,8 @@
   width: 2rem;
   height: 2rem;
   z-index: 2;
-  opacity: .5;
-  z-index: 2;
+  opacity: 0;
+  transition: all .2s ease-out;
 
   i {
     font-size: 2.4em;
