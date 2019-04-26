@@ -88,6 +88,9 @@
   // pointer-events: all;
   z-index: 1;
 
+  &:hover {
+    background: rgba($color-white, .2);
+  }
 
   i {
     margin: auto;
