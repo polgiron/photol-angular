@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
-import Macy from 'Macy';
+// import Macy from 'Macy';
 
 @Component({
   selector: 'app-photos',
@@ -19,22 +19,22 @@ export class PhotosComponent implements OnInit {
     this.photoService.currentPhotos = this.photos;
     // this.reorder(this.photos);
 
-    const macyInstance = Macy({
-      container: '#photos-list',
-      columns: 3,
-      trueOrder: true,
-      margin: 16,
-      breakAt: {
-        992: {
-          margin: 16,
-          columns: 2
-        },
-        767: {
-          margin: 16,
-          columns: 1
-        }
-      }
-    });
+    // const macyInstance = Macy({
+    //   container: '#photos-list',
+    //   columns: 3,
+    //   trueOrder: true,
+    //   margin: 16,
+    //   breakAt: {
+    //     992: {
+    //       margin: 16,
+    //       columns: 2
+    //     },
+    //     767: {
+    //       margin: 16,
+    //       columns: 1
+    //     }
+    //   }
+    // });
   }
 
   // reorder(array) {
