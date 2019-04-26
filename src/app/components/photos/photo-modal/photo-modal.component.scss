@@ -3,6 +3,7 @@
 .photo-wrapper {
   position: relative;
   overflow: hidden;
+  border: 1px solid $color-main-border;
 
   &:hover .infos {
     opacity: 1;

@@ -40,7 +40,6 @@
   transform: translate3d(-50%, -50%, 0);
   z-index: 1;
   visibility: hidden;
-  border: 1px solid $color-main-border;
 
   &:hover .close-button {
     opacity: .5;
