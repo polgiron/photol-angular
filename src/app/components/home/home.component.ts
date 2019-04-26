@@ -23,12 +23,13 @@ export class HomeComponent implements OnInit {
     const photoId = params.value.open;
 
     if (photoId) {
-      // this.router.navigate(['/', 'photos', photoId]);
+      this.router.navigate(['/', 'photos', photoId]);
     }
 
     this.photoService.modalPhotoChannel()
       .pipe(takeWhile(() => this._alive))
       .subscribe(modalPhoto => {
+        // console.log(modalPhoto);
         this.modalPhoto = modalPhoto;
       });
   }

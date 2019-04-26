@@ -1,5 +1,5 @@
 <ul id="photos-list" class="list">
-  <li class="list__entry" *ngFor="let photo of photos; let i = index">
+  <li class="list__entry" *ngFor="let photo of photos">
     <app-photo-thumb [photo]="photo"></app-photo-thumb>
   </li>
 </ul>

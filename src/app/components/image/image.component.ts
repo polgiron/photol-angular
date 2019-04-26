@@ -8,15 +8,28 @@ import { fadeOutAnimation } from 'src/app/utils/animations';
   animations: [fadeOutAnimation]
 })
 export class ImageComponent implements OnInit {
-  @Input() src: string;
+  @ViewChild('wrapper') wrapper: ElementRef;
   @Input() width: number;
   @Input() height: number;
-  @ViewChild('wrapper') wrapper: ElementRef;
+  @Input() set src(value: string) {
+    this.isLoaded = false;
+    this._src = value;
+    this.setPadding();
+  };
+  private _src: string;
   isLoaded: boolean = false;
+
+  get src() {
+    return this._src;
+  }
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  setPadding() {
     const ratio = this.height / this.width * 100;
     this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
   }

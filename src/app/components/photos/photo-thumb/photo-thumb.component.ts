@@ -18,6 +18,6 @@ export class PhotoThumbComponent implements OnInit {
   }
 
   openPhotoModal() {
-    this.photoService.openPhotoModal(this.photo.index);
+    this.photoService.openPhotoModal(this.photo);
   }
 }

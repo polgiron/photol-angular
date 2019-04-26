@@ -20,7 +20,7 @@ export class PhotoInfosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.tags);
+    // console.log(this.tags);
 
     if (this.description == '') {
       this.description = 'No description';

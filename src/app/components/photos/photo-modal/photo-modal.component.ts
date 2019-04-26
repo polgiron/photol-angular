@@ -14,8 +14,6 @@ export class PhotoModalComponent implements OnInit {
   @Input() set photo(value: any) {
     // console.log(value);
 
-    // this.resetLastPhoto();
-
     this._photo = value;
 
     this.extendPhoto();
@@ -51,10 +49,6 @@ export class PhotoModalComponent implements OnInit {
   ngOnInit() {
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);
-  }
-
-  resetLastPhoto() {
-    this.imageSrc = null;
   }
 
   setQueryParameter() {
