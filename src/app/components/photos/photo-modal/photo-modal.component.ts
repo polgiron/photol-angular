@@ -17,12 +17,16 @@ export class PhotoModalComponent implements OnInit {
 
     this.extendPhoto();
     this.setDialogWidth();
-    this.setQueryParameter();
 
     this.photoService.getContext(this.photo.id).then(albums => {
       this.albums = albums;
     });
   };
+  @Input() set active(value: boolean) {
+    if (value) {
+      this.setQueryParameter();
+    }
+  }
   private _resizeListener: EventListener;
   private _photo: any;
   imageSrc: string;
@@ -111,6 +115,5 @@ export class PhotoModalComponent implements OnInit {
 
   ngOnDestroy() {
     window.removeEventListener('resize', this._resizeListener);
-    this.utils.clearOpenQuery();
   }
 }

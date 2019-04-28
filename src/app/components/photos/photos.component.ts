@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
+import { ActivatedRoute } from '@angular/router';
 // import Macy from 'Macy';
 
 @Component({
@@ -12,12 +13,17 @@ export class PhotosComponent implements OnInit {
   numberOfColumns: number = 3;
 
   constructor(
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.photoService.currentPhotos = this.photos;
     this.reorder(this.photos);
+    this.photoService.currentPhotos = this.photos;
+
+    setTimeout(() => {
+      this.openPhotoOnReload();
+    }, 500);
 
     // const macyInstance = Macy({
     //   container: '#photos-list',
@@ -35,6 +41,19 @@ export class PhotosComponent implements OnInit {
     //     }
     //   }
     // });
+  }
+
+  openPhotoOnReload() {
+    const params: any = this.route.queryParams;
+    const photoId = params.value.open;
+
+    if (photoId) {
+      // console.log(photoId);
+      console.log(this.photos);
+      const photo = this.photos.find(photo => photo.id == photoId);
+      console.log(photo.id);
+      this.photoService.openPhotoModal(photo);
+    }
   }
 
   reorder(array) {

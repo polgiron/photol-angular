@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-photoset-modal',
@@ -12,7 +13,8 @@ export class PhotosetModalComponent implements OnInit {
   displayControl: boolean = true;
 
   constructor(
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private utils: Utils
   ) { }
 
   ngOnInit() {
@@ -54,5 +56,6 @@ export class PhotosetModalComponent implements OnInit {
 
   close() {
     this.photoService.closePhotoModal();
+    this.utils.clearOpenQuery();
   }
 }

@@ -16,6 +16,9 @@ export class PhotoService {
   }
 
   openPhotoModal(photo: any) {
+    console.log('open photo modal');
+    console.log(this.currentPhotos);
+    console.log(photo.id);
     this._modalPhoto.next(this.currentPhotos.indexOf(photo));
     document.body.classList.add('is-static');
   }

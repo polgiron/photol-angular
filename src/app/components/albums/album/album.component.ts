@@ -29,12 +29,12 @@ export class AlbumComponent implements OnInit, OnDestroy {
       if (albumId) {
         this.api.get('album/' + albumId).then((album: any) => {
           this.album = album;
-          console.log(album);
+          // console.log(album);
 
           this.cover = this.album.photo.find(album => album.isprimary == true);
           if (this.cover) {
             this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
-            console.log(this.cover);
+            // console.log(this.cover);
           }
 
           this.albumService.setAlbumTitle(this.album.title);
