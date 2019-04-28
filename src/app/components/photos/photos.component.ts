@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { ActivatedRoute } from '@angular/router';
+import { Utils } from 'src/app/utils/utils';
 // import Macy from 'Macy';
 
 @Component({
@@ -14,16 +15,24 @@ export class PhotosComponent implements OnInit {
 
   constructor(
     private photoService: PhotoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private utils: Utils
   ) { }
 
   ngOnInit() {
     this.reorder(this.photos);
     this.photoService.currentPhotos = this.photos;
 
-    setTimeout(() => {
-      this.openPhotoOnReload();
-    }, 500);
+    const params: any = this.route.queryParams;
+    const photoId = params.value.open;
+
+    if (photoId) {
+      setTimeout(() => {
+        this.openPhotoOnReload(photoId);
+      }, 500);
+    } else {
+      this.utils.hideSplashscreen();
+    }
 
     // const macyInstance = Macy({
     //   container: '#photos-list',
@@ -43,17 +52,13 @@ export class PhotosComponent implements OnInit {
     // });
   }
 
-  openPhotoOnReload() {
-    const params: any = this.route.queryParams;
-    const photoId = params.value.open;
-
-    if (photoId) {
-      // console.log(photoId);
-      console.log(this.photos);
-      const photo = this.photos.find(photo => photo.id == photoId);
-      console.log(photo.id);
-      this.photoService.openPhotoModal(photo);
-    }
+  openPhotoOnReload(photoId: number) {
+    // console.log(photoId);
+    console.log(this.photos);
+    const photo = this.photos.find(photo => photo.id == photoId);
+    console.log(photo.id);
+    this.photoService.openPhotoModal(photo);
+    this.utils.hideSplashscreen();
   }
 
   reorder(array) {

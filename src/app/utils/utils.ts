@@ -32,4 +32,15 @@ export class Utils {
       queryParamsHandling: 'merge'
     });
   }
+
+  hideSplashscreen() {
+    console.log('hide splashscreen');
+    const splashscreen: any = document.querySelector('#splashscreen');
+    if (splashscreen && !splashscreen.classList.contains('is-hidden')) {
+      splashscreen.classList.add('is-hidden');
+      setTimeout(() => {
+        splashscreen.remove();
+      }, 600);
+    }
+  }
 }
