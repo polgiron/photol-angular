@@ -27,6 +27,7 @@ import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
 import { PhotoInfosComponent } from './components/photos/photo-infos/photo-infos.component';
 import { PhotosetModalComponent } from './components/photos/photoset-modal/photoset-modal.component';
+import { LandpageComponent } from './components/landpage/landpage.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PhotosetModalComponent } from './components/photos/photoset-modal/photo
     ImageComponent,
     SearchComponent,
     PhotoInfosComponent,
-    PhotosetModalComponent
+    PhotosetModalComponent,
+    LandpageComponent
   ],
   imports: [
     HttpModule,

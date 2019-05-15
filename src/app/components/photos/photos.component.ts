@@ -11,7 +11,7 @@ import { Utils } from 'src/app/utils/utils';
 })
 export class PhotosComponent implements OnInit {
   @Input() photos: any;
-  numberOfColumns: number = 3;
+  @Input() columns: number = 3;
 
   constructor(
     private photoService: PhotoService,
@@ -69,8 +69,8 @@ export class PhotosComponent implements OnInit {
     const out = [];
     let col = 0;
 
-    while (col < this.numberOfColumns) {
-      for (let i = 0; i < array.length; i += this.numberOfColumns) {
+    while (col < this.columns) {
+      for (let i = 0; i < array.length; i += this.columns) {
         let _val = array[i + col];
         if (_val !== undefined) {
           out.push(_val);
