@@ -1,7 +1,7 @@
 @import '~src/assets/scss/variables';
 
 .input-wrapper {
-  width: 16rem;
+  width: 14rem;
 
   @include respond-to('small') {
     margin: auto;

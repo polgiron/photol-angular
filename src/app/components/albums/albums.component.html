@@ -2,7 +2,7 @@
   <app-loader></app-loader>
 </div>
 <div class="main-container" *ngIf="albums.length" [@fadeAnimation]>
-  <ul class="thumbs-list inner">
+  <ul class="grid-list inner">
     <li *ngFor="let album of albums">
       <app-album-thumb [album]="album"></app-album-thumb>
     </li>

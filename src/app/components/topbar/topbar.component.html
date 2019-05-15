@@ -6,6 +6,17 @@
       </a>
     </div>
     <div class="album-title">{{albumTitle}}</div>
-    <app-search-input (search)="onSearch($event)"></app-search-input>
+    <div class="right">
+      <button
+        ngfSelect
+        class="button"
+        accept="image/*"
+        multiple="1"
+        (filesChange)="onUpload($event)"
+      >
+        Upload
+      </button>
+      <app-search-input (search)="onSearch($event)"></app-search-input>
+    </div>
   </div>
 </header>

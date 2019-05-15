@@ -27,6 +27,10 @@ import { SearchComponent } from './components/search/search.component';
 import { Utils } from 'src/app/utils/utils';
 import { PhotoInfosComponent } from './components/photos/photo-infos/photo-infos.component';
 import { PhotosetModalComponent } from './components/photos/photoset-modal/photoset-modal.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ngfModule } from "angular-file";
+import { UploadService } from 'src/app/services/upload.service';
+import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -47,21 +51,25 @@ import { PhotosetModalComponent } from './components/photos/photoset-modal/photo
     ImageComponent,
     SearchComponent,
     PhotoInfosComponent,
-    PhotosetModalComponent
+    PhotosetModalComponent,
+    AdminComponent,
+    CheckboxComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ngfModule
   ],
   providers: [
     BaseApi,
     DatePipe,
     PhotoService,
     AlbumService,
-    Utils
+    Utils,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

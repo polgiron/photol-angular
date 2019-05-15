@@ -5,9 +5,11 @@ import { AlbumComponent } from 'src/app/components/albums/album/album.component'
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { PhotoComponent } from 'src/app/components/photos/photo/photo.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
+import { AdminComponent } from 'src/app/components/admin/admin.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'albums', pathMatch: 'full' },
+  // { path: '', redirectTo: 'albums', pathMatch: 'full' },
+  { path: '', redirectTo: 'admin', pathMatch: 'full' },
   {
     path: '',
     component: HomeComponent,
@@ -15,7 +17,8 @@ const routes: Routes = [
       { path: 'albums', component: AlbumsComponent },
       { path: 'albums/:albumId', component: AlbumComponent },
       { path: 'photos/:photoId', component: PhotoComponent },
-      { path: 'search', component: SearchComponent }
+      { path: 'search', component: SearchComponent },
+      { path: 'admin', component: AdminComponent }
     ]
   },
   { path: '**', redirectTo: '' }
