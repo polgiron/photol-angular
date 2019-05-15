@@ -16,10 +16,13 @@
   }
 }
 
-// .left {
-  // display: flex;
-  // align-items: baseline;
-// }
+.right {
+  display: flex;
+
+  >*:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
 
 .title {
   font-size: 2rem;

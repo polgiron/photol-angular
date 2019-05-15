@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
 import { AlbumService } from 'src/app/services/album.service';
+import { UploadService } from 'src/app/services/upload.service';
 
 @Component({
   selector: 'app-topbar',
@@ -12,7 +13,8 @@ export class TopbarComponent implements OnInit {
   albumTitle: string = '';
 
   constructor(
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private uploadService: UploadService
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class TopbarComponent implements OnInit {
 
   onSearch(event: any) {
 
+  }
+
+  onUpload(files: File[]) {
+    this.uploadService.setUploadPhotos(files);
   }
 
   ngOnDestroy() {
