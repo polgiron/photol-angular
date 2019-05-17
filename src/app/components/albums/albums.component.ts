@@ -3,6 +3,7 @@ import { BaseApi } from 'src/app/services/base-api.service';
 import { DatePipe } from '@angular/common';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { Utils } from 'src/app/utils/utils';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-albums',
@@ -11,21 +12,32 @@ import { Utils } from 'src/app/utils/utils';
   animations: [fadeAnimation]
 })
 export class AlbumsComponent implements OnInit {
-  albums: string[] = [];
+  albums: any;
 
   constructor(
     private api: BaseApi,
     private datePipe: DatePipe,
-    private utils: Utils
+    private utils: Utils,
+    private cache: CacheService
   ) { }
 
   ngOnInit() {
-    this.api.get('albums').then((albums: any) => {
-      this.albums = albums;
-      albums.forEach(album => {
+    this.getAlbums();
+  }
+
+  async getAlbums() {
+    this.albums = JSON.parse(this.cache.get('albums'));
+    // console.log(this.albums);
+
+    if (!this.albums) {
+      this.albums = await this.api.get('albums');
+      this.albums.forEach(album => {
         album.year = this.datePipe.transform(album.primary_photo_extras.datetaken, 'y');
       });
+      this.cache.set('albums', JSON.stringify(this.albums));
       this.utils.hideSplashscreen();
-    });
+    } else {
+      this.utils.hideSplashscreen();
+    }
   }
 }

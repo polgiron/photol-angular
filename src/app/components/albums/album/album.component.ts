@@ -4,6 +4,7 @@ import { BaseApi } from 'src/app/services/base-api.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { fadeAnimation } from 'src/app/utils/animations';
 import { PhotoService } from 'src/app/services/photo.service';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-album',
@@ -20,27 +21,39 @@ export class AlbumComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private api: BaseApi,
     private albumService: AlbumService,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private cache: CacheService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       const albumId = params['albumId'];
       if (albumId) {
-        this.api.get('album/' + albumId).then((album: any) => {
-          this.album = album;
-          // console.log(album);
-
-          this.cover = this.album.photo.find(album => album.isprimary == true);
-          if (this.cover) {
-            this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
-            // console.log(this.cover);
-          }
-
-          this.albumService.setAlbumTitle(this.album.title);
-        });
+        this.getAlbum(albumId);
       }
     });
+  }
+
+  async getAlbum(albumId: number) {
+    this.album = JSON.parse(this.cache.get('album_' + albumId));
+    // console.log(this.album);
+
+    if (!this.album) {
+      this.album = await this.api.get('album/' + albumId);
+      this.extendAlbum();
+      this.cache.set('album_' + albumId, JSON.stringify(this.album));
+    } else {
+      this.extendAlbum();
+    }
+  }
+
+  extendAlbum() {
+    this.cover = this.album.photo.find(album => album.isprimary == true);
+    if (this.cover) {
+      this.coverSrc = this.photoService.getBigThumbnail(this.cover.farm, this.cover.server, this.cover.id, this.cover.secret);
+      // console.log(this.cover);
+    }
+    this.albumService.setAlbumTitle(this.album.title);
   }
 
   ngOnDestroy() {

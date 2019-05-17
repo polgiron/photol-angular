@@ -7,7 +7,7 @@
     </div>
     <div class="album-title">{{albumTitle}}</div>
     <div class="right">
-      <button
+      <!-- <button
         ngfSelect
         class="button"
         accept="image/*"
@@ -15,7 +15,8 @@
         (filesChange)="onUpload($event)"
       >
         Upload
-      </button>
+      </button> -->
+      <a class="button" [routerLink]="['/', 'albums']">Albums</a>
       <app-search-input (search)="onSearch($event)"></app-search-input>
     </div>
   </div>

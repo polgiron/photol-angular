@@ -2,7 +2,8 @@
 
 .list {
   column-count: 3;
-  column-gap: 1.5rem;
+  column-gap: 2rem;
+  // column-gap: 1.5rem;
 
   @include respond-to('medium') {
     column-count: 2 !important;
@@ -16,8 +17,10 @@
 }
 
 .list__entry {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  // padding-top: .75rem;
+  // padding-bottom: .75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   break-inside: avoid;
 
   @include respond-to('small') {

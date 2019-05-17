@@ -32,6 +32,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ngfModule } from "angular-file";
 import { UploadService } from 'src/app/services/upload.service';
 import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.component';
+import { CacheService } from 'src/app/services/cache.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { CheckboxComponent } from 'src/app/components/admin/checkbox/checkbox.co
     PhotoService,
     AlbumService,
     Utils,
-    UploadService
+    UploadService,
+    CacheService
   ],
   bootstrap: [AppComponent]
 })
