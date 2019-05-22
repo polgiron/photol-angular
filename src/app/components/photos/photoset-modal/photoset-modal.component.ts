@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { Utils } from 'src/app/utils/utils';
 
@@ -7,8 +7,9 @@ import { Utils } from 'src/app/utils/utils';
   templateUrl: './photoset-modal.component.html',
   styleUrls: ['./photoset-modal.component.scss']
 })
-export class PhotosetModalComponent implements OnInit {
+export class PhotosetModalComponent implements OnInit, OnDestroy {
   @Input() index: number;
+  private _keydownListener: EventListener;
   photos: any;
   displayControl: boolean = true;
 
@@ -20,6 +21,9 @@ export class PhotosetModalComponent implements OnInit {
   ngOnInit() {
     this.photos = this.photoService.currentPhotos;
     this.displayControl = this.photos.length > 1;
+
+    this._keydownListener = this.onKeydown.bind(this);
+    window.addEventListener('keydown', this._keydownListener);
   }
 
   getPrevIndex(index: number) {
@@ -57,5 +61,23 @@ export class PhotosetModalComponent implements OnInit {
   close() {
     this.photoService.closePhotoModal();
     this.utils.clearOpenQuery();
+  }
+
+  onKeydown(event: any) {
+    switch (event.key) {
+      case 'Escape':
+        this.close();
+        break;
+      case 'ArrowLeft':
+        this.prev();
+        break;
+      case 'ArrowRight':
+        this.next();
+        break;
+    }
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('keydown', this._keydownListener);
   }
 }
