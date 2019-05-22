@@ -52,7 +52,7 @@ body.is-static {
 
 img.fade {
   opacity: 0;
-  transition: opacity 2s $ease-out-quint .5s, box-shadow .3s $ease-out-quint;
+  transition: opacity 1s $ease-out-quint, box-shadow .3s $ease-out-quint;
 
   &.is-loaded {
     opacity: 1;

@@ -1,5 +1,6 @@
 <a class="album-thumb" [routerLink]="['/', 'albums', album.id]">
   <div class="cover">
+    <!-- <img [src]="album.primary_photo_extras.url_m" alt=""> -->
     <app-image
       [src]="album.primary_photo_extras.url_m"
       [width]="album.primary_photo_extras.width_m"
